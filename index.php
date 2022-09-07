@@ -41,11 +41,6 @@
             <label for="password">Пароль</label>
         </div>
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
         <button class="w-100 btn btn-lg btn-primary mb-3" type="submit">Войти</button>
     </form>
     <div class="reg_btn_container" style="display: flex; align-items: center; justify-content: center">

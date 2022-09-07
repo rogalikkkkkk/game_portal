@@ -7,8 +7,8 @@ $params_joining_lobby = array(':logedin_user_id' => $_SESSION['user']['profile_i
 
 $users_wants_in_lobby = $pdo->prepare('
 select session_id, user_profile_id,
-(select login from user as u join user_profile p on u.id = p.user_id
-where p.id = sup.user_profile_id) as login,
+(select login from full_user_info
+where id = sup.user_profile_id) as login,
 (select rating from user_profile as up where up.id = sup.user_profile_id) as rating
 from session_user_profile as sup
 where session_id = :chosen_session_id 

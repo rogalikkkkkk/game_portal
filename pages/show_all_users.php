@@ -52,10 +52,10 @@ if (!isset($_COOKIE["login"])) {
 
                             if ($line['rating'] == 0 && $line['rig'] == 'юзер') {
                                 $res_button = '
-                                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#surname_modal' . $line['id'] . '">
+                                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#surname_modal' . $line['user_id'] . '">
                                         Сделать администратором
                                     </button>
-                                    <div class="modal fade" id="surname_modal' . $line['id'] . '" tabindex="-1" role="dialog" aria-labelledby="surname_modalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="surname_modal' . $line['user_id'] . '" tabindex="-1" role="dialog" aria-labelledby="surname_modalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -98,7 +98,7 @@ if (!isset($_COOKIE["login"])) {
                             <td>' . $line['rating'] . '</td>
                             <td>
                                 <form action="../not_pages/change_role.php" method="post">
-                                    <input type="hidden" name="user_id" value="' . $line['id'] . '">
+                                    <input type="hidden" name="user_id" value="' . $line['user_id'] . '">
                                     <input type="hidden" name="op_num" value="' . $op_num . '">
                                     ' . $res_button . '                               
                                 </form>

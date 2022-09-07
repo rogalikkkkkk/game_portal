@@ -45,14 +45,10 @@ if (count($res_check_existing_user) > 0) {
         "profile_id" => $res_check_existing_user_profile[0]['id']
     ];
 
-    setcookie("login", $res_check_existing_user[0]['login']);
-    setcookie("password", $res_check_existing_user[0]['password']);
+    setcookie("login", $res_check_existing_user[0]['login'], 0, "/");
+    setcookie("password", $res_check_existing_user[0]['password'], 0, "/");
 
-    $create_new_profile = $pdo->prepare('
-    insert into user_profile (user_id) VALUES (:new_user_id)
-    ');
-    $create_new_profile->execute(array(':new_user_id' => $res_check_existing_user[0]['id']));
-
+    print_r($res_check_existing_user[0]['login']);
     header('Location: ../pages/main.php');
 }
 

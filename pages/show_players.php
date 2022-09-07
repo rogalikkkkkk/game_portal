@@ -30,44 +30,44 @@ if (!isset($_COOKIE["login"])) {
             <div class="row">
                 <div class="col-12">
                     <h1 class="text-begin text-black" style="padding: 0 0 10px 0">Игроки, зарегистрированные на портале</h1>
-                    <p>Администратором можно сделать только игрока с нулевым рейтингом</p>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Логин игрока</th>
-                            <th scope="col">Пароль игрока</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Рейтинг</th>
-                            <th scope="col"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        require_once('../not_pages/get_all_players.php');
-                        $i = 1;
-                        foreach ($res_all_players as &$line) {
+                    <form action="../not_pages/delete_player.php" method="post">
 
-                            echo '<tr>
-                            <th scope="row">' . $i . '</th>
-                            <td>' . $line['login'] . '</td>
-                            <td>' . $line['password'] . '</td>
-                            <td>' . $line['email'] . '</td>
-                            <td>' . $line['rating'] . '</td>
-                            <td>
-                                <form action="../not_pages/delete_player.php" method="post">
-                                    <input type="hidden" name="user_id" value="' . $line['id'] . '">
-                                    <button type="submit" name="join" class="btn btn-danger btn-sm">
-                                        Удалить пользователя
-                                    </button>                               
-                                </form>
-                            </td>
-                        </tr>';
-                            $i++;
-                        }
-                        ?>
-                        </tbody>
-                    </table>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Логин игрока</th>
+                                <th scope="col">Пароль игрока</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Рейтинг</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            require_once('../not_pages/get_all_players.php');
+                            $i = 1;
+                            foreach ($res_all_players as &$line) {
+
+                                echo '<tr>
+                                <th scope="row">
+                                    <input class="form-check-input" type="checkbox" name="user_id[]" value="' . $line['login'] . '">
+                                </th>
+                                <td>' . $line['login'] . '</td>
+                                <td>' . $line['password'] . '</td>
+                                <td>' . $line['email'] . '</td>
+                                <td>' . $line['rating'] . '</td>
+                                
+                            </tr>';
+                                $i++;
+                            }
+                            ?>
+                            </tbody>
+                        </table>
+                        <div class="d-grid col-4 mx-auto">
+                            <button class="btn btn-danger mt-3" type="submit">Выбрать отмеченных участников</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

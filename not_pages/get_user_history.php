@@ -9,8 +9,9 @@ select
 (select name from game
 where id = source.game_id) as game_name,
     time,
-    prize
-from (select time, prize, game_id from ((select * from session_user_profile
+    prize, 
+    status_id
+from (select time, prize, game_id, status_id from ((select * from session_user_profile
                where user_profile_id = :logedin_user_id) as sup join session on (session.id = sup.session_id))) as source
 ');
 $my_history_info->execute($param_credentials);

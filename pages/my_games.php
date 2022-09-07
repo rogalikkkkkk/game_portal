@@ -124,7 +124,7 @@ require_once ('../php_code/check_db.php');
                             <td>
                                 <form action="choose_players.php" method="post">
                                     <input type="hidden" name="my_games_session_id" value="' . $line['id'] . '" >
-                                    <button type="submit" class="btn btn-sm btn-dark">
+                                    <button type="submit" class="btn btn-sm btn-dark"' . $dis . '>
                                         Выбрать игроков
                                     </button>
                                 </form>

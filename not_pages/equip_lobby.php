@@ -45,8 +45,8 @@ if(count($chosen_users_id) == $res_get_session_members_number[0]['members_number
             ':user' => $user));
 
         $this_user_email = $pdo->prepare('
-        select email from user join user_profile up on user.id = up.user_id
-        where up.id = :user
+        select email from full_user_info
+        where id = :user
         ');
         $this_user_email->execute(array(':user' => $user));
         $res_this_user_email = $this_user_email->fetchAll(PDO::FETCH_ASSOC);

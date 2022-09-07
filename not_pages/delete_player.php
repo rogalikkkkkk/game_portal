@@ -5,8 +5,11 @@ session_start();
 require_once ('pdo_insert.php');
 
 $delete_player = $pdo->prepare('
-delete from user where id = :user_id
+delete from user where login = :user_login
 ');
-$delete_player->execute(array(':user_id' => $_POST['user_id']));
+
+foreach ($_POST['user_id'] as &$value) {
+    $delete_player->execute(array(':user_login' => $value));
+}
 
 header('Location: ../pages/show_players.php');

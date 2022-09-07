@@ -92,6 +92,7 @@ if (!isset($_COOKIE["login"])) {
                         require_once ('../not_pages/get_user_history.php');
                         $i = 1;
                         foreach ($res_my_history_info as &$histline) {
+                            if ($histline['prize'] != 2) continue;
                             $outcome = $histline['prize'] > 0 ? 'Выигрыш' : 'Проигрыш';
                             echo '<tr>
                             <th scope="row">' . $i . '</th>
