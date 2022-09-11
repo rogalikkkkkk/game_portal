@@ -111,7 +111,12 @@ if (!isset($_COOKIE["login"])) {
                     </table>
 
 
-                    <!-- Modal -->
+                </div>
+            </div>
+            <div class="row">
+                <h1 class="text-begin text-black" style="padding: 0 0 10px 0">Статистика по проводимым играм</h1>
+                <div class="col-12">
+                    <img src="../graphics/statistics.php">
                 </div>
             </div>
         </div>
